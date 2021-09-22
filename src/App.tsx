@@ -1,14 +1,12 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout";
 import theme from "./theme";
 import Home from "./pages/Home";
-import './App.css';
 
 function App() {
 
