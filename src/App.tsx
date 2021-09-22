@@ -7,6 +7,7 @@ import {
 import { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout";
 import theme from "./theme";
+import Home from "./pages/Home";
 import './App.css';
 
 function App() {
@@ -17,10 +18,13 @@ function App() {
         <Router>
 
           <Switch>
-            <Route path="/">
-              <h1>test</h1>
-            </Route>
+            {/* <Route path="/search-results">
+              <h1>test2</h1>
+            </Route> */}
 
+            <Route path="/">
+              <Home />
+            </Route>
           </Switch>
 
         </Router>
