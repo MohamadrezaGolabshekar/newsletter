@@ -1,45 +1,9 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-type QueryObj = {
-    section?: string;
-    pageSize?: number;
-    [key: string]: any;
-}
+import { useEffect, useState } from 'react';
+import getData, { QueryObj } from "../utils/getData";
 
 type Resp = {
     results: any[];
-}
-
-const getData = (
-    baseUrl = process.env.REACT_APP_BASE_API_URL,
-    queryObj: QueryObj,
-    cancelToken: any
-) => {
-
-    // here I change a query object to query string to join to our main api url
-    let queryString = '';
-    if (Object.keys(queryObj).length) {
-        for (let i in queryObj) {
-            queryString += `&${i}=${queryObj[i]}`;
-        }
-    }
-
-    return new Promise((resolve, reject) => {
-        const apiUrl = `${baseUrl}?api-key=${process.env.REACT_APP_API_KEY}&${queryString}`;
-        console.log("apiUrl :: ", apiUrl)
-        axios.get(apiUrl, { cancelToken })
-            .then(response => {
-                resolve(response.data.response);
-            })
-            .catch(error => {
-                if (axios.isCancel(error)) {
-                    console.log('Request canceled', error.message);
-                } else {
-                    reject(error);
-                }
-            });
-    })
 }
 
 /**
@@ -59,7 +23,14 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
         const source = CancelToken.source();
         async function fetchData() {
             try {
-                const data = await getData(baseUrl, { section, "page-size": pageSize }, source.token);
+                const data = await getData(
+                    baseUrl,
+                    {
+                        section,
+                        "page-size": pageSize
+                    },
+                    source.token
+                );
                 setData(data as Resp);
             } catch (error) {
                 console.log("error :: ", error);
@@ -73,9 +44,9 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
             // cancel request in unmounting phase
             source.cancel('Operation canceled by the user.')
         }
-    }, [section, pageSize]);
+    }, [baseUrl, section, pageSize]);
 
-    return {data, loading};
+    return { data, loading };
 }
 
 export default useGetData;
