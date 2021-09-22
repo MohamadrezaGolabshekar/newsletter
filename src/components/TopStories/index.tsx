@@ -1,10 +1,12 @@
-import useGetData from "../../hooks/useGetData";
+import { FC } from "react";
 
-const TopStories = () => {
-    const topStories = useGetData({section: "news", pageSize: 8});
-    console.log("topStories :: ", topStories);
+type Props = {
+    news: any[];
+}
 
-    return <h2>TopStories</h2>
+const TopStories: FC<Props> = ({ news }) => {
+
+    return <h2>TopStories {news.length}</h2>
 };
 
 export default TopStories;

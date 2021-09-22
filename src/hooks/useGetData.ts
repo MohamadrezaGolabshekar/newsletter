@@ -7,6 +7,10 @@ type QueryObj = {
     [key: string]: any;
 }
 
+type Resp = {
+    results: any[];
+}
+
 const getData = (
     baseUrl = process.env.REACT_APP_BASE_API_URL,
     queryObj: QueryObj,
@@ -44,7 +48,8 @@ const getData = (
  */
 const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
 
-    const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<Resp>({} as Resp);
+    const [loading, setLoading] = useState(true);
     const section = queryObj.section;
     const pageSize = queryObj.pageSize;
 
@@ -55,9 +60,11 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
         async function fetchData() {
             try {
                 const data = await getData(baseUrl, { section, "page-size": pageSize }, source.token);
-                setData(data);
+                setData(data as Resp);
             } catch (error) {
                 console.log("error :: ", error);
+            } finally {
+                setLoading(false)
             }
         }
         fetchData();
@@ -68,7 +75,7 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
         }
     }, [section, pageSize]);
 
-    return data;
+    return {data, loading};
 }
 
 export default useGetData;
