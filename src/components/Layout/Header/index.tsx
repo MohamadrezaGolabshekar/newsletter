@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import Logo from'../../Logo';
+import Logo from '../../Logo';
 import SearchBox from "../../SearchBox";
 
 
 const HeaderContainer = styled.div`
     display: flex;
+    position: relative;
     // width: 100%;
     height: ${props => props.theme.headerHeight}px;
     align-items: center;
@@ -14,12 +15,18 @@ const HeaderContainer = styled.div`
 
 `;
 
+const SearchContainer = styled.div`
+    
+`;
+
 const Header = () => {
 
     return (
         <HeaderContainer>
             <Logo />
-            <SearchBox />
+            <SearchContainer>
+                <SearchBox />
+            </SearchContainer>
         </HeaderContainer>
     );
 }
