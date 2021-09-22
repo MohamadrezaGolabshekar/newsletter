@@ -16,6 +16,7 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
     const [loading, setLoading] = useState(true);
     const section = queryObj.section;
     const pageSize = queryObj.pageSize;
+    const showFields = queryObj.showFields;
 
     useEffect(() => {
         // I use CancelToken to cancel pending request in unmounting phase 
@@ -27,7 +28,8 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
                     baseUrl,
                     {
                         section,
-                        "page-size": pageSize
+                        "page-size": pageSize,
+                        "show-fields": showFields
                     },
                     source.token
                 );
@@ -44,7 +46,7 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
             // cancel request in unmounting phase
             source.cancel('Operation canceled by the user.')
         }
-    }, [baseUrl, section, pageSize]);
+    }, [baseUrl, section, pageSize, showFields]);
 
     return { data, loading };
 }

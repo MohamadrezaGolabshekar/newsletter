@@ -1,11 +1,24 @@
 import Section from "./Section";
 
+const sections = [
+    {
+        label: "Sport",
+        value: "sport"
+    },
+    {
+        label: "Culture",
+        value: "culture"
+    },
+    {
+        label: "Life and style",
+        value: "lifeandstyle"
+    }
+]
+
 const NewsSections = () => {
 
     return <>
-        <Section sectionName="sport" />
-        <Section sectionName="culture" />
-        <Section sectionName="lifeandstyle" />
+        {sections.map(s => <Section key={s.value} sectionDetail={s} />)}
     </>
 };
 
