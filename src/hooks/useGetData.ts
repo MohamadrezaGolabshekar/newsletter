@@ -1,9 +1,14 @@
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import getData, { QueryObj } from "../utils/getData";
 
 type Resp = {
     results: any[];
+}
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
 }
 
 /**
@@ -17,6 +22,9 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
     const section = queryObj.section;
     const pageSize = queryObj.pageSize;
     const showFields = queryObj.showFields;
+    const page = queryObj.page || 1;
+    const q = useQuery().get('q')
+    const order = useQuery().get('order')
 
     useEffect(() => {
         // I use CancelToken to cancel pending request in unmounting phase 
@@ -24,17 +32,21 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
         const source = CancelToken.source();
         async function fetchData() {
             try {
+                setLoading(true);
                 const data = await getData(
                     baseUrl,
                     {
                         section,
+                        q,
+                        page,
                         "page-size": pageSize,
-                        "show-fields": showFields
+                        "show-fields": showFields,
                     },
                     source.token
                 );
                 setData(data as Resp);
             } catch (error) {
+                setData({results: []} as Resp);
                 console.log("error :: ", error);
             } finally {
                 setLoading(false)
@@ -46,7 +58,7 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
             // cancel request in unmounting phase
             source.cancel('Operation canceled by the user.')
         }
-    }, [baseUrl, section, pageSize, showFields]);
+    }, [baseUrl, section, pageSize, showFields, q, order, page]);
 
     return { data, loading };
 }

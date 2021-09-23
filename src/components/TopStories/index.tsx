@@ -8,7 +8,7 @@ type Props = {
 
 const TopStories: FC<Props> = ({ news }) => {
 
-    return <>
+    return news && news.length ? <>
         
         <TopContainer>
             <NewsCard item={news[0]} size="l" />
@@ -25,7 +25,7 @@ const TopStories: FC<Props> = ({ news }) => {
             }
         </BottomContainer>
 
-    </>
+    </> : null;
 };
 
 export default TopStories;

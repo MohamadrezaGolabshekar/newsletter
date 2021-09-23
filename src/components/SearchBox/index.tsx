@@ -1,11 +1,17 @@
+import { useState } from "react";
+import { useLocation } from 'react-router-dom';
 import { ReactComponent as SearchIcon } from "../../assets/search-icon@2x.svg";
 import debounce from "../../utils/debounce";
 import { Container, Icon, Input } from "./styledComponents";
+import useSetQueryString from "../../hooks/useSetQueryString";
 
 const SearchBox = () => {
+  const [query, setQuery] = useState("");
+  const location = useLocation();
+  useSetQueryString("q", query, location.pathname !== "/search-result" ? "/search-result" : "" );
 
-  const search = () => {
-    console.log(99)
+  const search = (value: string) => {
+    setQuery(value);
   }
 
   return (

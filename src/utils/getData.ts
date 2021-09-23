@@ -22,7 +22,6 @@ const getData = (
 
     return new Promise((resolve, reject) => {
         const apiUrl = `${baseUrl}?api-key=${process.env.REACT_APP_API_KEY}&${queryString}`;
-        console.log("apiUrl :: ", apiUrl)
         axios.get(apiUrl, { cancelToken })
             .then(response => {
                 resolve(response.data.response);

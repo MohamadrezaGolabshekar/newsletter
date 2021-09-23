@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Container } from "./styledComponents";
 import { CardItem } from "../../types/cardItem";
 
@@ -14,15 +14,14 @@ const shortText = (text: string = "", limit: number) => (
 );
 
 const NewsCard: FC<Props> = ({ item, size = "m" }) => {
-    console.log(item)
     return (
-        <Container size={size} color={colors[Math.floor(Math.random() * 4)]} imgUrl={item.fields.thumbnail}>
+        <Container size={size} color={colors[Math.floor(Math.random() * 4)]} imgUrl={item?.fields?.thumbnail}>
             <div>
-                <h3>{shortText(item.webTitle, size === "s" ? 40 : size === "l" ? 100 : 70)}</h3>
-                <p>{shortText(item.fields.trailText, size === "s" ? 70 : size === "l" ? 120 : 100)}</p>
+                <h3>{shortText(item?.webTitle, size === "s" ? 40 : size === "l" ? 100 : 70)}</h3>
+                <p>{shortText(item?.fields?.trailText, size === "s" ? 70 : size === "l" ? 120 : 100)}</p>
             </div>
         </Container>
     )
 }
 
-export default NewsCard;
+export default memo(NewsCard);
