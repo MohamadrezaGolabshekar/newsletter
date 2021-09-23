@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import BookmarkButton from "../BookmarkButton";
+import Sort from "../Sort";
 import { Container } from "./styledComponents";
 
 type Props = {
@@ -15,9 +16,8 @@ const SectionHeader: FC<Props> = ({ title, hasBookMark }) => {
             <h1>{title}</h1>
             <Container>
                 {hasBookMark && <BookmarkButton text="VIEW BOOKMARK" redirect />}
-                <select name="zz" id="">
-                    <option value="ss">ss</option>
-                </select>
+                
+                <Sort />
             </Container>
         </Container>
     )

@@ -21,6 +21,7 @@ const NewsCard: FC<Props> = ({ item, size = "m" }) => {
     return (
         <Link to={`/detail?api=${item.apiUrl}`}>
             <Container
+                onClick={() => window.scrollTo(0, 0)}
                 size={size}
                 color={colors[Math.floor(Math.random() * 4)]}
                 imgUrl={item?.fields?.thumbnail}

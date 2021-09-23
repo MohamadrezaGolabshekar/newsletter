@@ -10,12 +10,16 @@ const Home = () => {
         showFields: "headline,thumbnail,trailText,firstPublicationDate,bodyText"
     });
 
-    return topStories.loading ?
+    return <>
+        <SectionHeader title="Top stories" hasBookMark />
+    {
+        topStories.loading ?
         <h1>Loading...</h1> : <>
-            <SectionHeader title="Top stories" hasBookMark />
             <TopStories news={topStories.data.results} />
             <NewsSections />
         </>
+    }
+    </>
 }
 
 export default Home;

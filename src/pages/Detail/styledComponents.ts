@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import img from '../../assets/Logo_White.png';
 
-type Props = {
-  src?: string;
-}
+
 
 export const Container = styled.div`
   margin: 50px 0;
@@ -12,11 +10,11 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Content = styled.div`
-  max-width: 700px;
+export const Content = styled.div<{fullWidth: boolean}>`
+  max-width: ${props => props.fullWidth ? "100%" : "700px"};
 `;
 
-export const Img = styled.div<Props>`
+export const Img = styled.div<{src: string}>`
   max-width: 500px;
   width: 100%;
   height: 500px;

@@ -20,7 +20,7 @@ const Detail = () => {
         <h1>Loading...</h1> :
 
         <Container>
-            <Content>
+            <Content fullWidth={!!!item.fields.thumbnail}>
                 <BookmarkButton text="Bookmark" />
                 <p>{item.webPublicationDate}</p>
                 <h1>{item.webTitle}</h1>
@@ -35,7 +35,7 @@ const Detail = () => {
                     }}
                 ></div>
             </Content>
-            <Img src={item.fields.thumbnail} />
+            {item.fields.thumbnail && <Img src={item.fields.thumbnail} />}
         </Container>
 
 }

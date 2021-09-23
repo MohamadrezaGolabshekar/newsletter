@@ -1,25 +1,35 @@
-import { useState, memo, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { memo } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon@2x.svg";
 import debounce from "../../utils/debounce";
 import { Container, Icon, Input } from "./styledComponents";
-import useSetQueryString from "../../hooks/useSetQueryString";
 
 const SearchBox = () => {
-  const [query, setQuery] = useState("");
+  const history = useHistory();
   const location = useLocation();
   console.log("location :: ", location)
-  useSetQueryString("q", query, location.pathname !== "/search-result" && location.search ? "/search-result" : "" );
 
-  const search = (value: string) => {
-    setQuery(value);
+  const search = (query: string) => {
+    const name = "q";
+    const params = new URLSearchParams(location.search.substring(1));
+    if (query) {
+      params.delete(name);
+      params.append(name, query);
+    } else {
+      params.delete(name);
+    }
+    if (location.pathname !== "/search-result" && query) {
+      history.push(`${'/search-result'}?${params.toString()}`)
+    } else {
+      history.push({ search: params.toString() })
+    }
   }
 
   return (
     <Container>
       <Input placeholder="Search all news" onChange={(e) => debounce(search, 400)(e.target.value)} />
       <Icon>
-        <SearchIcon          
+        <SearchIcon
           width="20px"
           height="20px"
           stroke="black"

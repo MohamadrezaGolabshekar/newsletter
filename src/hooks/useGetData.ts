@@ -40,6 +40,7 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
                         section,
                         q,
                         page,
+                        "order-by": order || "newest",
                         "page-size": pageSize,
                         "show-fields": showFields,
                     },
