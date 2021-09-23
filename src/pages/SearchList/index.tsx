@@ -16,7 +16,7 @@ const SearchList = () => {
         page,
         section: "sport|news|culture|lifeandstyle",
         pageSize: 15,
-        showFields: "headline,thumbnail,trailText,firstPublicationDate"
+        showFields: "headline,thumbnail,trailText,firstPublicationDate,bodyText"
     });
     const isLoadMore = useScrollHandler("search-list", !data.loading)
 

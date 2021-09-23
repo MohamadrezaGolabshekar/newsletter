@@ -9,6 +9,7 @@ import theme from "./theme";
 import Home from "./pages/Home";
 import SearchList from "./pages/SearchList";
 import Bookmarks from "./pages/Bookmarks";
+import Detail from "./pages/Detail";
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
         <Layout>
 
           <Switch>
+            <Route path="/detail">
+              <Detail />
+            </Route>
+            
             <Route path="/search-result">
               <SearchList />
             </Route>

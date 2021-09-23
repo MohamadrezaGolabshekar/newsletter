@@ -19,15 +19,16 @@ const LARGE_HEIGHT = "510px";
 
 export const Container = styled.div<Props>`
   position: relative;
+  cursor: pointer;
   width: ${props => props.size === "s" ? SMALL_WIDTH : props.size === "m" ? MEDIUM_WIDTH : LARGE_WIDTH };
   height: ${props => props.size === "s" ? SMALL_HEIGHT : props.size === "m" ? MEDIUM_HEIGHT : LARGE_HEIGHT };
-  background-color: ${props => props.theme.lightBlue};
+  background-color: ${props => props.theme.coverBlue};
   margin: 5px 0;
   border-bottom: 3px solid ${props => props.color};
   background-image: url(${props => props.imgUrl || img});
   background-size: ${props => props.imgUrl ? "cover" : "100%"};
   background-repeat: no-repeat;
-  background-position: ${props => props.imgUrl ? "center" : "top"};
+  background-position: ${props => props.imgUrl ? "center" : "0 20px"};
   box-shadow: rgb(0 0 0 / 60%) 2px 3px 15px;
   div {
     background-color: ${props => props.theme.opacityPrimary};

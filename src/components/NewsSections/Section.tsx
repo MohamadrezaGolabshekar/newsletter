@@ -14,7 +14,7 @@ const Section: FC<Props> = ({ sectionDetail }) => {
     const SectionData = useGetData({
         section: sectionDetail.value,
         pageSize: 3,
-        showFields: "headline,thumbnail,trailText,firstPublicationDate"
+        showFields: "headline,thumbnail,trailText,firstPublicationDate,bodyText"
     });
 
     return SectionData?.data?.results?.length > 0 ?

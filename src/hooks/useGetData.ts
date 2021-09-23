@@ -5,9 +5,10 @@ import getData, { QueryObj } from "../utils/getData";
 
 type Resp = {
     results: any[];
+    content?: object;
 }
 
-function useQuery() {
+export function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
 

@@ -1,15 +1,22 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 
 const useSetQueryString = (name: string, query: string, newPath?: string) => {
-
     const history = useHistory();
+    const location = useLocation();
+    
     useEffect(() => {
-        console.log("===> ", name, query, newPath)
-        const params = new URLSearchParams()
+        const qs = location.search.substring(1);
+        const params = new URLSearchParams(qs);
+        if (qs.indexOf("api=") >= 0) {
+            params.delete(name);
+            history.push({ search: params.toString() })
+            return;
+        };
         if (query) {
-            params.append(name, query)
+            params.delete(name);
+            params.append(name, query);
         } else {
             params.delete(name);
         }

@@ -7,7 +7,7 @@ const Home = () => {
     const topStories = useGetData({
         section: "news",
         pageSize: 8,
-        showFields: "headline,thumbnail,trailText,firstPublicationDate"
+        showFields: "headline,thumbnail,trailText,firstPublicationDate,bodyText"
     });
 
     return topStories.loading ?
