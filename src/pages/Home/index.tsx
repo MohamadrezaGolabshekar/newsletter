@@ -1,6 +1,7 @@
 import useGetData from "../../hooks/useGetData";
 import TopStories from "../../components/TopStories";
 import NewsSections from "../../components/NewsSections";
+import SectionHeader from "../../components/SectionHeader";
 
 const Home = () => {
     const topStories = useGetData({
@@ -11,9 +12,7 @@ const Home = () => {
 
     return topStories.loading ?
         <h1>Loading...</h1> : <>
-            <div>
-                <h1>Top stories</h1>
-            </div>
+            <SectionHeader title="Top stories" hasBookMark />
             <TopStories news={topStories.data.results} />
             <NewsSections />
         </>

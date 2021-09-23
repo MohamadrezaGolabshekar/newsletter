@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Logo from '../../Logo';
 import SearchBox from "../../SearchBox";
+import { Link } from "react-router-dom";
 
 
 const HeaderContainer = styled.div`
@@ -23,7 +24,10 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Logo />
+            <Link to="/">
+                <Logo />
+            </Link>
+
             <SearchContainer>
                 <SearchBox />
             </SearchContainer>

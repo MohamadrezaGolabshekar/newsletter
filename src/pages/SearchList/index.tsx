@@ -4,6 +4,7 @@ import useGetData from "../../hooks/useGetData";
 import useScrollHandler from "../../hooks/useScrollHandler";
 import NewsCard from "../../components/NewsCard";
 import { Container } from "./styledComponents";
+import SectionHeader from "../../components/SectionHeader";
 
 const SearchList = () => {
 
@@ -43,7 +44,7 @@ const SearchList = () => {
                 <h1>Loading...</h1> :
                 list.length ?                
                 <>
-                    <h1>Search results</h1>
+                    <SectionHeader title="Search results" hasBookMark />
 
                     <Container >
                         {

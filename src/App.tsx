@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import theme from "./theme";
 import Home from "./pages/Home";
 import SearchList from "./pages/SearchList";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
 
@@ -19,6 +20,10 @@ function App() {
           <Switch>
             <Route path="/search-result">
               <SearchList />
+            </Route>
+
+            <Route path="/bookmarks">
+              <Bookmarks />
             </Route>
 
             <Route path="/">
