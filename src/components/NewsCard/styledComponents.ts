@@ -8,15 +8,24 @@ type Props = {
   imgUrl?: string;
 }
 
+const SMALL_WIDTH = "300px";
+const SMALL_HEIGHT = "250px";
+
+const MEDIUM_WIDTH = "400px";
+const MEDIUM_HEIGHT = "400px";
+
+const LARGE_WIDTH = "600px";
+const LARGE_HEIGHT = "510px";
+
 export const Container = styled.div<Props>`
   position: relative;
-  width: ${props => props.size === "s" ? '300px' : props.size === "m" ? '400px' : '600px' };
-  height: ${props => props.size === "s" ? '300px' : props.size === "m" ? '400px' : '400px' };
+  width: ${props => props.size === "s" ? SMALL_WIDTH : props.size === "m" ? MEDIUM_WIDTH : LARGE_WIDTH };
+  height: ${props => props.size === "s" ? SMALL_HEIGHT : props.size === "m" ? MEDIUM_HEIGHT : LARGE_HEIGHT };
   background-color: ${props => props.theme.lightBlue};
   margin: 5px 0;
   border-bottom: 3px solid ${props => props.color};
   background-image: url(${props => props.imgUrl || img});
-  background-size: ${props => props.imgUrl ? "cover" : "unset"};
+  background-size: ${props => props.imgUrl ? "cover" : "100%"};
   background-repeat: no-repeat;
   background-position: ${props => props.imgUrl ? "center" : "top"};
   box-shadow: rgb(0 0 0 / 60%) 2px 3px 15px;
@@ -27,6 +36,8 @@ export const Container = styled.div<Props>`
     bottom: 0;
     padding: 0px 15px 10px 15px;
     height: 140px;
+    width: 100%;
+    box-sizing: border-box;
   }
 `;
 
