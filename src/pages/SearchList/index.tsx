@@ -39,7 +39,7 @@ const SearchList = () => {
 
 
     return <div id="search-list">
-        <SectionHeader title="Search results" hasBookMark />
+        <SectionHeader title="Search results" isBookMark />
         {
             data.loading && page === 1 ?
                 <h1>Loading...</h1> :

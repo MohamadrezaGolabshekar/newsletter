@@ -11,7 +11,7 @@ const Home = () => {
     });
 
     return <>
-        <SectionHeader title="Top stories" hasBookMark />
+        <SectionHeader title="Top stories" isBookMark />
     {
         topStories.loading ?
         <h1>Loading...</h1> : <>

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 type Props = {
     text: string;
-    onClick?: () => {};
+    onClick?: () => void;
     redirect?: boolean;
 }
 

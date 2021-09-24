@@ -5,20 +5,19 @@ import { Container } from "./styledComponents";
 
 type Props = {
     title: string;
-    hasBookMark: boolean;
+    isBookMark: boolean;
 }
 
 
-const SectionHeader: FC<Props> = ({ title, hasBookMark }) => {
+const SectionHeader: FC<Props> = ({ title, isBookMark }) => {
 
     return (
         <Container>
             <h1>{title}</h1>
-            <Container>
-                {hasBookMark && <BookmarkButton text="VIEW BOOKMARK" redirect />}
-                
+            {isBookMark && <Container>
+                <BookmarkButton text="VIEW BOOKMARK" redirect />
                 <Sort />
-            </Container>
+            </Container>}
         </Container>
     )
 }

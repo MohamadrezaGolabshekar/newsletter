@@ -8,8 +8,9 @@ export const Button = styled.button`
   border-radius: 3px;
   display: flex;
   align-items: center;
-  width: 150px;
+  min-width: 150px;
   justify-content: center;
   cursor: pointer;
+  padding: 0 20px;
 `;
 
