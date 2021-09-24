@@ -1,12 +1,14 @@
 import { FC, memo } from "react";
 import { Select } from "./styledComponents";
-import { useHistory, useLocation } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom";
+import { useQuery } from "../../hooks/useGetData";
 
 
 const Sort: FC = () => {
 
     const history = useHistory();
     const location = useLocation();
+    const order = useQuery().get("order");
 
     const changeHandler = (e: any) => {
         const name = "order";
@@ -23,7 +25,7 @@ const Sort: FC = () => {
     }
 
     return (
-        <Select name="sort" onChange={changeHandler}>
+        <Select name="sort" onChange={changeHandler} value={order || "newest"}>
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
         </Select>
