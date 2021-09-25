@@ -8,7 +8,7 @@ export const Button = styled.button`
   border-radius: 3px;
   display: flex;
   align-items: center;
-  min-width: 150px;
+  min-width: 170px;
   justify-content: center;
   cursor: pointer;
   padding: 0 20px;

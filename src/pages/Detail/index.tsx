@@ -45,6 +45,7 @@ const Detail = () => {
             <Content fullWidth={!!!item.fields.thumbnail}>
                 <BookmarkButton
                     text={`${isSaved ? "REMOVE" : "ADD"} BOOKMARK`}
+                    isOn={isSaved}
                     onClick={() => {
                         setIsSaved(s => !s)
                         setShouldUpdate(s => !s)
