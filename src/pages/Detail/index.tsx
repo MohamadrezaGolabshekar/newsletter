@@ -7,6 +7,8 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { CardItem } from "../../types/cardItem";
 import { Container, Content, Img } from "./styledComponents";
 import Loading from "../../components/Loading";
+import { ReactComponent as IconOff } from "../../assets/bookmarkoff-icon@2x.svg";
+import { ReactComponent as IconOn } from "../../assets/bookmarkon-icon@2x.svg";
 
 const Detail = () => {
 
@@ -68,6 +70,7 @@ const Detail = () => {
 
             {showToast &&
                 <Toast isSuccess={isSaved}>
+                    {isSaved ? <IconOn style={{ width: 18 }} /> : <IconOff style={{ width: 18 }} />}&nbsp;
                     {`${!isSaved ? "REMOVED FROM" : "ADDED TO"} BOOKMARK`}
                 </Toast>
             }
