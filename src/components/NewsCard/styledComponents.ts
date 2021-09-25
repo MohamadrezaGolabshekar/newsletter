@@ -42,6 +42,10 @@ export const Container = styled.div<Props>`
     height: ${props => MEDIUM_HEIGHT};
   };
 
+  @media ${device.mobileL} { 
+    max-width: calc(100vw - 20px);
+  };
+
   div {
     background-color: ${props => props.theme.opacityPrimary};
     color: ${props => props.theme.light};

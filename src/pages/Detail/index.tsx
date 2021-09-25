@@ -5,7 +5,7 @@ import useGetData from "../../hooks/useGetData";
 import { useQuery } from "../../hooks/useGetData";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { CardItem } from "../../types/cardItem";
-import { Container, Content, Img } from "./styledComponents";
+import { Container, Content, Img, Header } from "./styledComponents";
 import Loading from "../../components/Loading";
 import { ReactComponent as IconOff } from "../../assets/bookmarkoff-icon@2x.svg";
 import { ReactComponent as IconOn } from "../../assets/bookmarkon-icon@2x.svg";
@@ -43,38 +43,44 @@ const Detail = () => {
     return content.loading ?
         <Loading /> :
 
-        <Container>
-            <Content fullWidth={!!!item.fields.thumbnail}>
-                <BookmarkButton
-                    text={`${isSaved ? "REMOVE" : "ADD"} BOOKMARK`}
-                    isOn={isSaved}
-                    onClick={() => {
-                        setIsSaved(s => !s)
-                        setShouldUpdate(s => !s)
-                    }}
-                />
-                <p>{item.webPublicationDate}</p>
-                <h1>{item.webTitle}</h1>
-                <h4>{item.fields.headline}</h4>
+        <>
+            <Header>
+                <span>
+                    <BookmarkButton
+                        text={`${isSaved ? "REMOVE" : "ADD"} BOOKMARK`}
+                        isOn={isSaved}
+                        onClick={() => {
+                            setIsSaved(s => !s)
+                            setShouldUpdate(s => !s)
+                        }}
+                    />
+                    <p>{item.webPublicationDate}</p>
+                </span>
+            </Header>
+            <Container>
+                <Content fullWidth={!!!item.fields.thumbnail}>
+                    <h1>{item.webTitle}</h1>
+                    <h4>{item.fields.headline}</h4>
 
-                {/* This dangerously-looking name was a built-in reminder to pay attention 
+                    {/* This dangerously-looking name was a built-in reminder to pay attention 
                     at correctly whitelisting the HTML tags I allowed the user to enter to 
                     that HTML string. */}
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: item.fields.body
-                    }}
-                ></div>
-            </Content>
-            {item.fields.thumbnail && <Img src={item.fields.thumbnail} />}
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: item.fields.body
+                        }}
+                    ></div>
+                </Content>
+                {item.fields.thumbnail && <Img src={item.fields.thumbnail} />}
 
-            {showToast &&
-                <Toast isSuccess={isSaved}>
-                    {isSaved ? <IconOn style={{ width: 18 }} /> : <IconOff style={{ width: 18 }} />}&nbsp;
-                    {`${!isSaved ? "REMOVED FROM" : "ADDED TO"} BOOKMARK`}
-                </Toast>
-            }
-        </Container>
+                {showToast &&
+                    <Toast isSuccess={isSaved}>
+                        {isSaved ? <IconOn style={{ width: 18 }} /> : <IconOff style={{ width: 18 }} />}&nbsp;
+                        {`${!isSaved ? "REMOVED FROM" : "ADDED TO"} BOOKMARK`}
+                    </Toast>
+                }
+            </Container>
+        </>
 
 }
 

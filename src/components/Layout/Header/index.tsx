@@ -14,11 +14,16 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     padding: 0 100px;
     background-color: ${props => props.theme.primary};
+    flex-wrap: wrap;
     @media ${device.laptopM} { 
         padding: 0 50px;
     }
     @media ${device.laptop} { 
         padding: 0 10px;
+    }
+    @media ${device.mobileL} { 
+        padding: 20px 50px 20px 50px;
+        justify-content: center;
     }
 `;
 
@@ -30,9 +35,11 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <Link to="/">
-                <Logo />
-            </Link>
+            <div>
+                <Link to="/">
+                    <Logo />
+                </Link>
+            </div>
 
             <SearchContainer>
                 <SearchBox />
