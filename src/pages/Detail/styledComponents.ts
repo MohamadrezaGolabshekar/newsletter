@@ -18,21 +18,22 @@ export const Content = styled.div<{fullWidth: boolean}>`
   max-width: ${props => props.fullWidth ? "100%" : "700px"};
   img {
     max-width: ${props => props.fullWidth ? "100%" : "700px"};
+    height: auto;
   }
   @media ${device.tabletL} { 
     max-width: 100%;
     img {
-      max-width: 600px};
+      max-width: 600px;
     }
   }
   @media ${device.mobileXL} { 
     img {
-      max-width: 500px};
+      max-width: 400px;
     }
   }
   @media ${device.mobileL} { 
     img {
-      max-width: 400px};
+      max-width: 300px;
     }
   }
 `;
