@@ -1,7 +1,7 @@
 import { FC } from "react";
 import useGetData from "../../hooks/useGetData";
 import NewsCard from "../NewsCard";
-import { SectionWrapper, Container } from "./styledComponents";
+import { SectionWrapper, Container, SectionTitle } from "./styledComponents";
 
 type Props = {
     sectionDetail: {
@@ -19,7 +19,7 @@ const Section: FC<Props> = ({ sectionDetail }) => {
 
     return SectionData?.data?.results?.length > 0 ?
         <SectionWrapper>
-            <h2>{sectionDetail.label}</h2>
+            <SectionTitle>{sectionDetail.label}</SectionTitle>
 
             <Container>
                 {SectionData.data.results.map(item => <NewsCard key={item.id} item={item} />)}

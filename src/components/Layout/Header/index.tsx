@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Logo from '../../Logo';
 import SearchBox from "../../SearchBox";
 import { Link } from "react-router-dom";
+import { device } from '../../../theme';
 
 
 const HeaderContainer = styled.div`
@@ -13,7 +14,12 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     padding: 0 100px;
     background-color: ${props => props.theme.primary};
-
+    @media ${device.laptopM} { 
+        padding: 0 50px;
+    }
+    @media ${device.laptop} { 
+        padding: 0 10px;
+    }
 `;
 
 const SearchContainer = styled.div`
