@@ -5,6 +5,7 @@ import useScrollHandler from "../../hooks/useScrollHandler";
 import NewsCard from "../../components/NewsCard";
 import { Container } from "./styledComponents";
 import SectionHeader from "../../components/SectionHeader";
+import Loading from "../../components/Loading";
 
 const SearchList = () => {
 
@@ -42,7 +43,7 @@ const SearchList = () => {
         <SectionHeader title="Search results" isBookMark />
         {
             data.loading && page === 1 ?
-                <h1>Loading...</h1> :
+                <Loading /> :
                 list.length ?                
                 <>
 
@@ -51,7 +52,7 @@ const SearchList = () => {
                             list.map((item: any) => <NewsCard key={`${item.id}-${new Date().getTime()}`} item={item} size="m" />)
                         }
                     </Container>
-                    {data.loading && page > 0 && <h2>Loading...</h2>}
+                    {data.loading && page > 0 && <Loading size={40} height="100px" />}
                 </> :
                 <h2>Empty list :(</h2>
         }

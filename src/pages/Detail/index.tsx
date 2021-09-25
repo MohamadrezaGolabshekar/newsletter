@@ -6,6 +6,7 @@ import { useQuery } from "../../hooks/useGetData";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { CardItem } from "../../types/cardItem";
 import { Container, Content, Img } from "./styledComponents";
+import Loading from "../../components/Loading";
 
 const Detail = () => {
 
@@ -38,7 +39,7 @@ const Detail = () => {
     }, [shouldUpdate]);
 
     return content.loading ?
-        <h1>Loading...</h1> :
+        <Loading /> :
 
         <Container>
             <Content fullWidth={!!!item.fields.thumbnail}>
