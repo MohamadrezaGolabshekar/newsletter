@@ -3,6 +3,7 @@ import SectionHeader from "../../components/SectionHeader";
 import NewsCard from "../../components/NewsCard";
 import { Container } from "./styledComponents";
 
+
 const Bookmarks = () => {
     const [savedNews] = useLocalStorage("saved", []);
 

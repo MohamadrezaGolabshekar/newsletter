@@ -1,14 +1,12 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import BookmarkButton from "../../components/BookmarkButton";
-import { Toast } from "../../components/Toast";
+import Toast from "../../components/Toast";
 import useGetData from "../../hooks/useGetData";
 import { useQuery } from "../../hooks/useGetData";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { CardItem } from "../../types/cardItem";
 import { Container, Content, Img, Header } from "./styledComponents";
 import Loading from "../../components/Loading";
-import { ReactComponent as IconOff } from "../../assets/bookmarkoff-icon@2x.svg";
-import { ReactComponent as IconOn } from "../../assets/bookmarkon-icon@2x.svg";
 
 const Detail = () => {
 
@@ -36,7 +34,6 @@ const Detail = () => {
             setSavedNews(isSaved ? [...arr, item] : [...arr]);
             setShowToast(true);
             setShouldUpdate(false);
-            setTimeout(() => setShowToast(false), 1000);
         }
     }, [shouldUpdate]);
 
@@ -44,6 +41,7 @@ const Detail = () => {
         <Loading /> :
 
         <>
+            <Toast show={showToast} isSuccess={isSaved} hideToast={() => setShowToast(false)} />
             <Header>
                 <span>
                     <BookmarkButton
@@ -72,13 +70,7 @@ const Detail = () => {
                     ></div>
                 </Content>
                 {item.fields.thumbnail && <Img src={item.fields.thumbnail} />}
-
-                {showToast &&
-                    <Toast isSuccess={isSaved}>
-                        {isSaved ? <IconOn style={{ width: 18 }} /> : <IconOff style={{ width: 18 }} />}&nbsp;
-                        {`${!isSaved ? "REMOVED FROM" : "ADDED TO"} BOOKMARK`}
-                    </Toast>
-                }
+    
             </Container>
         </>
 
