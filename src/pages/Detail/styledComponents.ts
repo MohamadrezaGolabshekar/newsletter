@@ -16,23 +16,23 @@ export const Container = styled.div`
 
 export const Content = styled.div<{fullWidth: boolean}>`
   max-width: ${props => props.fullWidth ? "100%" : "700px"};
-  img {
+  img, iframe {
     max-width: ${props => props.fullWidth ? "100%" : "700px"};
     height: auto;
   }
   @media ${device.tabletL} { 
     max-width: 100%;
-    img {
+    img, iframe {
       max-width: 600px;
     }
   }
   @media ${device.mobileXL} { 
-    img {
+    img, iframe {
       max-width: 400px;
     }
   }
   @media ${device.mobileL} { 
-    img {
+    img, iframe {
       max-width: 300px;
     }
   }
