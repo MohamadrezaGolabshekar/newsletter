@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
 import { Container } from "./styledComponents";
 import { CardItem } from "../../types/cardItem";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -16,7 +15,6 @@ const shortText = (text: string = "", limit: number) => (
 );
 
 const NewsCard: FC<Props> = ({ item, size = "m" }) => {
-    const history = useHistory();
 
     return (
         <Link to={`/detail?api=${item.apiUrl}`}>
@@ -27,8 +25,8 @@ const NewsCard: FC<Props> = ({ item, size = "m" }) => {
                 imgUrl={item?.fields?.thumbnail}
             >
                 <div>
-                    <h3>{shortText(item?.webTitle, size === "s" ? 40 : size === "l" ? 100 : 70)}</h3>
-                    <p>{shortText(item?.fields?.bodyText, size === "s" ? 70 : size === "l" ? 120 : 100)}</p>
+                    <h3>{shortText(item?.webTitle, size === "s" ? 40 : size === "l" ? 100 : 50)}</h3>
+                    <p>{shortText(item?.fields?.bodyText, size === "s" ? 60 : size === "l" ? 120 : 70)}</p>
                 </div>
             </Container>
         </Link>

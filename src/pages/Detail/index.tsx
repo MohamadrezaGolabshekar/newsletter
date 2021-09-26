@@ -17,7 +17,7 @@ const Detail = () => {
     const content = useGetData({
         section: "all",
         pageSize: 1,
-        showFields: "headline,thumbnail,trailText,webPublicationDate,body"
+        showFields: "headline,thumbnail,trailText,webPublicationDate,bodyText,body"
     }, useQuery().get("api") || "");
 
     const item: CardItem = content.data.content as CardItem || {};
