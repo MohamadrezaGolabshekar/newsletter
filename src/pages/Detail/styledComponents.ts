@@ -18,6 +18,8 @@ export const Content = styled.div<{fullWidth: boolean}>`
   max-width: ${props => props.fullWidth ? "100%" : "700px"};
   img, iframe {
     max-width: ${props => props.fullWidth ? "100%" : "700px"};
+  }
+  img {
     height: auto;
   }
   @media ${device.tabletL} { 
