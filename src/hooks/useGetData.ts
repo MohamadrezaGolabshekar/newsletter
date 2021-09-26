@@ -49,7 +49,6 @@ const useGetData = (queryObj: QueryObj = {}, baseUrl?: string) => {
                 setData(data as Resp);
             } catch (error) {
                 setData({results: []} as Resp);
-                console.log("error :: ", error);
             } finally {
                 setLoading(false)
             }

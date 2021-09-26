@@ -27,9 +27,7 @@ const getData = (
                 resolve(response.data.response);
             })
             .catch(error => {
-                if (axios.isCancel(error)) {
-                    console.log('Request canceled', error.message);
-                } else {
+                if (!axios.isCancel(error)) {
                     reject(error);
                 }
             });
