@@ -16,7 +16,7 @@ export const Container = styled.div<{isOpen: boolean, ref: any}>`
   }
 `;
 
-export const Input = styled.input<{isOpen: boolean}>`
+export const Input = styled.input<{isOpen: boolean, ref: any}>`
   color: ${props => props.theme.light};
   width: ${props => props.isOpen ? "220px" : "0"};
   transition: width .5s;
