@@ -28,7 +28,10 @@ const HeaderContainer = styled.div`
 `;
 
 const SearchContainer = styled.div`
-    
+    align-self: end;
+    @media ${device.mobileL} { 
+        align-self: unset;
+    }
 `;
 
 const Header = () => {

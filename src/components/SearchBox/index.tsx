@@ -1,13 +1,16 @@
-import { memo } from "react";
+import { memo, useState, useRef } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { ReactComponent as SearchIcon } from "../../assets/search-icon@2x.svg";
 import debounce from "../../utils/debounce";
 import { Container, Icon, Input } from "./styledComponents";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 const SearchBox = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
   const location = useLocation();
-  console.log("location :: ", location)
+  const ref = useRef();
+  useOnClickOutside(ref, () => setIsOpen(false));
 
   const search = (query: string) => {
     const name = "q";
@@ -26,15 +29,19 @@ const SearchBox = () => {
   }
 
   return (
-    <Container>
-      <Input placeholder="Search all news" onChange={(e) => debounce(search, 400)(e.target.value)} />
+    <Container isOpen={isOpen} ref={ref}>
+      <Input 
+        isOpen={isOpen} 
+        placeholder="Search all news" 
+        onChange={(e) => debounce(search, 400)(e.target.value)} 
+        />
       <Icon>
         <SearchIcon
           width="20px"
           height="20px"
           stroke="black"
           onClick={() => {
-
+            setIsOpen(true)
           }}
         />
       </Icon>
